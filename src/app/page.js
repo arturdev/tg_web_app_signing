@@ -9,6 +9,8 @@ import DrawingCanvas from './DrawingCanvas';
 import LoadingOverlay from './Loading/LoadingOverlay';
 import './App.css'; // Import the CSS filey'
 import { useSearchParams } from 'next/navigation';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Home() {
   const canvasRef = useRef(null);
@@ -27,6 +29,15 @@ export default function Home() {
   };
 
   const handleSave = async () => {
+    if (fullName.trim() === "") {
+      // show alert popup saying that name is required
+      toast.error('Please enter your name', {
+        position: toast.POSITION.TOP_CENTER, // Change the position if needed
+        // You can also customize other options like autoClose, closeOnClick, etc.
+      });
+      return;
+    }
+
     const canvas = canvasRef.current;
     const image = canvas.toDataURL('image/png'); // Convert canvas to PNG data URL    
     setIsUploading(true);
@@ -62,7 +73,7 @@ export default function Home() {
 
   return (        
     <main className={styles.main}>            
-    <Script src="https://telegram.org/js/telegram-web-app.js" defer></Script>
+    {/* <Script src="https://telegram.org/js/telegram-web-app.js" defer></Script> */}
         <div className="App">
        <div className="header">
        <p>Մուտքագրեք Ձեր Անուն Ազգանունը / Enter your full name</p>
@@ -80,6 +91,7 @@ export default function Home() {
       <button className='download-button' onClick={handleSave}>Ստորագրել! / Sign!</button>
       </div>      
       {isUploading && <LoadingOverlay />}
+      <ToastContainer />
     </div>
     </main>
   )
