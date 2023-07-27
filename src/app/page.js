@@ -8,17 +8,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import DrawingCanvas from './DrawingCanvas';
 import LoadingOverlay from './Loading/LoadingOverlay';
 import './App.css'; // Import the CSS filey'
+import { useSearchParams } from 'next/navigation'
 
 export default function Home() {
-
   const canvasRef = useRef(null);
   const [fullName, setFullName] = useState('');
   const [isUploading, setIsUploading] = useState(false);
-  // const tg = window.Telegram.WebApp;
 
-  // useEffect(() => {
-    // tg.ready();
-  // }, [tg]);
+  const searchParams = useSearchParams();
+  const docId = searchParams.get("docId");
 
   const handleFullNameChange = (event) => {
     setFullName(event.target.value);
@@ -26,13 +24,7 @@ export default function Home() {
 
   const handleSave = async () => {
     const canvas = canvasRef.current;
-    const image = canvas.toDataURL('image/png'); // Convert canvas to PNG data URL
-    // console.log(image);
-    // const google = GoogleUtils('16M5Rn4z1Gy20wrRn8P5HzcWptvgnth3DJ3OZ4bD1lHo', fullName, image);
-    // await google.sign();
-    
-    
-    // Example of uploading the image to the cloud (replace the URL with your cloud service endpoint)
+    const image = canvas.toDataURL('image/png'); // Convert canvas to PNG data URL    
     setIsUploading(true);
     fetch('https://signdocument-qhhw3p7hbq-uc.a.run.app', {
       method: 'POST',
@@ -40,7 +32,7 @@ export default function Home() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ 
-        docId: "16M5Rn4z1Gy20wrRn8P5HzcWptvgnth3DJ3OZ4bD1lHo",
+        docId: docId,
         fullname: fullName,
         signature: image,
        }),
