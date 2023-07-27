@@ -4,19 +4,23 @@ import Image from 'next/image'
 import Head from 'next/head'
 import Script from 'next/script'
 import styles from './page.module.css'
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, createContext, useContext } from 'react';
 import DrawingCanvas from './DrawingCanvas';
 import LoadingOverlay from './Loading/LoadingOverlay';
 import './App.css'; // Import the CSS filey'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation';
 
 export default function Home() {
   const canvasRef = useRef(null);
   const [fullName, setFullName] = useState('');
   const [isUploading, setIsUploading] = useState(false);
+  const [webApp, setWebApp] = useState();
 
   const searchParams = useSearchParams();
   const docId = searchParams.get("docId");
+
+  useEffect(() => {
+  }, []);
 
   const handleFullNameChange = (event) => {
     setFullName(event.target.value);
@@ -41,6 +45,8 @@ export default function Home() {
       .then((data) => {
         setIsUploading(false);
         console.log('Image uploaded:', data);        
+        window.postMessage('web_app_close');
+        window.close();
       })
       .catch((error) => {
         setIsUploading(false);
@@ -56,7 +62,7 @@ export default function Home() {
 
   return (        
     <main className={styles.main}>            
-    <Script src="https://telegram.org/js/telegram-web-app.js"></Script>
+    <Script src="https://telegram.org/js/telegram-web-app.js" defer></Script>
         <div className="App">
        <div className="header">
        <p>Մուտքագրեք Ձեր Անուն Ազգանունը / Enter your full name</p>
