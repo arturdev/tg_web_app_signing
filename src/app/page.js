@@ -58,6 +58,10 @@ export default function Home() {
         console.log('Image uploaded:', data);        
         window.postMessage('web_app_close');
         window.close();
+
+        toast.success('Successfully Signed! You can close the window now.', {
+          position: toast.POSITION.TOP_CENTER,
+        });
       })
       .catch((error) => {
         setIsUploading(false);
