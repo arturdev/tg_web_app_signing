@@ -84,7 +84,7 @@ export default function Home() {
           placeholder="Անուն Ազգանուն"
         />
       </div>
-      <h3>Ստորագրեք ստօրև ուղանկյան մեջ / Sign in the rectangular area bellow</h3>
+      <h3>Ստորագրեք ստորև ուղանկյան մեջ / Sign in the rectangular area bellow</h3>
       <DrawingCanvas fullName={fullName} canvasRef={canvasRef} />
       <div>
       <button className='reset-button' onClick={handleClear}>Մաքրել! / Clear!</button>       
