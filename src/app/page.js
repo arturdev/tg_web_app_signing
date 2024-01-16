@@ -43,7 +43,20 @@ export default function Home() {
       });
       return;
     }
-
+    if (!selectedBuilding.length) {
+      toast.error('Please Select The Building', {
+        position: toast.POSITION.TOP_CENTER, // Change the position if needed
+        // You can also customize other options like autoClose, closeOnClick, etc.
+      });
+      return;
+    }
+    if (!selectedApartment.length) {
+      toast.error('Please Select Apartment', {
+        position: toast.POSITION.TOP_CENTER, // Change the position if needed
+        // You can also customize other options like autoClose, closeOnClick, etc.
+      });
+      return;
+    }
     setPopupMessage(fullName + '\n' + 'Շենք: ' + selectedBuilding + '\n' + 'Բնակարան: ' + selectedApartment)
     setShowModal(true);
   }
