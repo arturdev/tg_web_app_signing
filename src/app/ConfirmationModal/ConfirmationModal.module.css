@@ -1,0 +1,85 @@
+/* Add your custom styles for the modal here */
+.modal {
+  /* Add styles for the modal container */
+  /* Example styles: */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;  
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  /* Add styles for the modal content */
+  /* Example styles: */
+  min-width: 300px;
+  background-color: white;
+  padding: 20px;
+  padding-top: 0px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.buttons {
+  /* Add styles for the button container */
+  /* Example styles: */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;  
+}
+
+.cancelButton {
+  /* Add styles for the Cancel button */
+  /* Example styles: */
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;  
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.signButton {
+  /* Add styles for the Sign button */
+  /* Example styles: */
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.title {
+  white-space: pre-wrap;
+  font-size: 18px;
+}
+
+.redText {
+  color: red;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* Style for green text */
+.greenText {
+  color: green;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* Style for black text */
+.blackText {
+  color: black;
+  font-size: 22px;
+  font-weight: 700;
+}

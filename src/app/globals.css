@@ -39,3 +39,36 @@
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 }
+
+.large-dropdown {
+  width: 220px; /* Adjust the width as needed */
+  height: 40px; /* Adjust the height as needed */
+  font-size: 16px; /* Adjust the font size as needed */
+}
+
+.dropdown + .dropdown {
+  margin-top: 10px; /* Adjust the margin as needed */
+}
+
+.radio-button {
+  display: inline-block;
+  margin-right: 10px; /* Add margin for spacing between radio buttons */
+  margin-top: 15px; /* Adjust the margin as needed */
+}
+
+/* Add this CSS to style the label text */
+.radio-button label {
+  display: inline-block;
+  margin-left: 5px; /* Adjust margin as needed */
+  font-size: 16px; /* Adjust the font size as needed */
+  font-weight: 600; /* Adjust the font size as needed */
+}
+
+.first-radio {
+  color: green;
+}
+
+/* Style the last radio label as red */
+.radio-button:last-child label {
+  color: red;
+}
