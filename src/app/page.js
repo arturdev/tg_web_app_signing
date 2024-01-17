@@ -178,7 +178,7 @@ export default function Home() {
                 checked={selectedRadio === '0'}
                 onChange={() => setSelectedRadio('0')}
               />
-              Ռեռնպահ              
+              Ձեռնպահ
             </label>
           </div>
 
