@@ -86,7 +86,7 @@ export default function Home() {
         fullname: fullName,
         building: selectedBuilding,
         appartment: selectedApartment,
-        vote: parseInt(selectedRadio) || 1,
+        vote: parseInt(selectedRadio),
         signature: image,
        }),
     })
