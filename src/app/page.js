@@ -76,7 +76,7 @@ export default function Home() {
     const canvas = canvasRef.current;
     const image = canvas.toDataURL('image/png'); // Convert canvas to PNG data URL    
     setIsUploading(true);
-    fetch('https://signdocument-qhhw3p7hbq-uc.a.run.app', {
+    fetch('https://mamikonyants.ottsurfer.cc/signer/signDocument', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
