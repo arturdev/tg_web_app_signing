@@ -28,6 +28,8 @@ export default function Home() {
   const docId = searchParams.get("docId");
   const noBuilding = searchParams.get("noBuilding") === 'true';
 
+  console.log(`NoBuildingValue: ${noBuilding}`)
+
   useEffect(() => {
   }, []);
 
