@@ -26,6 +26,7 @@ export default function Home() {
 
   const searchParams = useSearchParams();
   const docId = searchParams.get("docId");
+  const noBuilding = searchParams.get("noBuilding") === 'true';
 
   useEffect(() => {
   }, []);
@@ -43,21 +44,28 @@ export default function Home() {
       });
       return;
     }
-    if (!selectedBuilding.length) {
+    if (!selectedBuilding.length && !noBuilding) {
       toast.error('Please Select The Building', {
         position: toast.POSITION.TOP_CENTER, // Change the position if needed
         // You can also customize other options like autoClose, closeOnClick, etc.
       });
       return;
     }
-    if (!selectedApartment.length) {
+    if (!selectedApartment.length && !noBuilding) {
       toast.error('Please Select Apartment', {
         position: toast.POSITION.TOP_CENTER, // Change the position if needed
         // You can also customize other options like autoClose, closeOnClick, etc.
       });
       return;
     }
-    setPopupMessage(fullName + '\n' + 'Շենք: ' + selectedBuilding + '\n' + 'Բնակարան: ' + selectedApartment)
+
+    let confMessage = ''
+    if (noBuilding) {
+      confMessage = fullName
+    } else {
+        confMessage = fullName + '\n' + 'Շենք: ' + selectedBuilding + '\n' + 'Բնակարան: ' + selectedApartment
+    }
+    setPopupMessage(confMessage)
     setShowModal(true);
   }
 
@@ -86,6 +94,7 @@ export default function Home() {
         fullname: fullName,
         building: selectedBuilding,
         appartment: selectedApartment,
+        noBuilding,
         vote: parseInt(selectedRadio),
         signature: image,
        }),
@@ -127,34 +136,36 @@ export default function Home() {
         />
       </div>
       {/* Dropdowns */}
-      <div className="dropdowns">
-        <div className="dropdown">
-          <select
-            value={selectedBuilding}
-            onChange={(e) => setSelectedBuilding(e.target.value)}
-            className="large-dropdown"
-          >
-            <option value="">Շենք / Select Building</option>
-            <option value="22">22</option>
-            <option value="22/1">22/1</option>
-            <option value="22/2">22/2</option>
-          </select>
+      {!noBuilding && (
+        <div className="dropdowns">
+          <div className="dropdown">
+            <select
+              value={selectedBuilding}
+              onChange={(e) => setSelectedBuilding(e.target.value)}
+              className="large-dropdown"
+            >
+              <option value="">Շենք / Select Building</option>
+              <option value="22">22</option>
+              <option value="22/1">22/1</option>
+              <option value="22/2">22/2</option>
+            </select>
+          </div>
+          <div className="dropdown">
+            <select
+              value={selectedApartment}
+              onChange={(e) => setSelectedApartment(e.target.value)}
+              className="large-dropdown"
+            >
+              <option value="">Բնակարան / Apartment</option>
+              {Array.from({ length: 91 }, (_, index) => (
+                <option key={index} value={index + 1}>
+                  {index + 1}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-        <div className="dropdown">
-          <select
-            value={selectedApartment}
-            onChange={(e) => setSelectedApartment(e.target.value)}
-            className="large-dropdown"
-          >
-            <option value="">Բնակարան / Apartment</option>
-            {Array.from({ length: 91 }, (_, index) => (
-              <option key={index} value={index + 1}>
-                {index + 1}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
+      )}
       {/* Radio buttons */}
       <div className="radio-buttons">
           <label></label>
