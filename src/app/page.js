@@ -26,7 +26,7 @@ export default function Home() {
 
   const searchParams = useSearchParams();
   const docId = searchParams.get("docId");
-  const noBuilding = searchParams.get("noBuilding") === 'true';
+  const noBuilding = searchParams.get("noBuilding");
 
   console.log(`NoBuildingValue: ${noBuilding}`)
 
